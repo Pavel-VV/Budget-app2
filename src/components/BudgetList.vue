@@ -5,7 +5,7 @@
         <div class="list-item" v-for="(item, prop) in list" :key="prop">
           <span class="budget-comments">{{ item.comments }}</span>
           <span class="budget-value">{{ item.value }}</span>
-          <ElButton type="danger" size="mini">Delete</ElButton>
+          <ElButton type="danger" size="mini" @click="deleteElement(item.id)">Delete</ElButton>
         </div>
       </template>
       <ElAlert v-else type="info" :title="emptyTitle" :closable="false"/>
@@ -29,6 +29,11 @@ export default {
     header: 'Budjet List',
     emptyTitle: "Empty List",
   }),
+  methods: {
+    deleteElement(id) {
+      this.$emit('deleteItem', id);
+    },
+  },
   computed: {
     isEmpty() {
       return !Object.keys(this.list).length

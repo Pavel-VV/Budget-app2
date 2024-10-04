@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <TotalBalance :total="totalBalance"/>
-    <BudgetList :list="list"/>
+    <BudgetList :list="list" @deleteItem="onDeleteItem"/>
   </div>
 </template>
 
@@ -31,6 +31,11 @@ export default {
       },
     }
   }),
+  methods: {
+    onDeleteItem(id) {
+      this.$delete(this.list, id);
+    }
+  },
   computed: {
     totalBalance() {
       return Object.values(this.list).reduce((acc, el) => {
