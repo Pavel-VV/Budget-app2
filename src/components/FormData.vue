@@ -5,7 +5,6 @@
         <ElSelect class="type-select" v-model="formData.type" placeholder="Choose type...">
           <ElOption label="Income" value="INCOME"/>
           <ElOption label="Outcome" value="OUTCOME"/>
-          
         </ElSelect>
       </ElFormItem>
       <ElFormItem label="Comments" prop="comment">
