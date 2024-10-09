@@ -2,7 +2,7 @@
   <div id="app">
     <FormData @submitDataForm="onSubmitDataForm"/>
     <TotalBalance :total="totalBalance"/>
-    <BudgetList :list="list" @deleteItem="onDeleteItem"/>
+    <BudgetList :list="list" @deleteItemInApp="onDeleteItem"/>
   </div>
 </template>
 
@@ -41,7 +41,6 @@ export default {
     onSubmitDataForm(data) {
       const dataObj = {...data, id: Math.random()}
       this.$set(this.list, dataObj.id, dataObj);
-      console.log(this.list);
     }
   },
   computed: {
