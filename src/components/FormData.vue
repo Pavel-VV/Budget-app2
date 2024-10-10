@@ -43,17 +43,17 @@ export default {
   methods: {
     onSubmitForm() {
       this.$refs.addItemForm.validate((valid) => {
-        if(this.formData.type === "OUTCOME") {
-          // this.formData.value = -this.formData.value;
-          // this.formData.value = String(this.formData.value).startsWith("-") ? this.formData.value : Number('-' + this.formData.value);
-          this.formData.value = this.formData.value <= 0 ? this.formData.value : Number('-' + this.formData.value);
-        }
-
-        else {
-          this.formData.value = this.formData.value >= 0 ? this.formData.value : this.formData.value * -1;
-        }
-
         if(valid) {
+          if(this.formData.type === "OUTCOME") {
+            // this.formData.value = -this.formData.value;
+            // this.formData.value = String(this.formData.value).startsWith("-") ? this.formData.value : Number('-' + this.formData.value);
+            this.formData.value = this.formData.value <= 0 ? this.formData.value : Number('-' + this.formData.value);
+          }
+
+          else {
+            this.formData.value = this.formData.value >= 0 ? this.formData.value : this.formData.value * -1;
+          }
+
           this.$emit('submitDataForm', { ...this.formData });
           this.$refs.addItemForm.resetFields();
         }
