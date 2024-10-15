@@ -17,7 +17,8 @@ export default {
   },
   methods: {
     deleteElement(id) {
-      this.$emit('deleteItem', id);
+      let result = confirm(`Вы действительно хотите удалить: "${this.listItem.comment}"?`);
+      if(result) this.$emit('deleteItem', id);
     },
   }
 

@@ -1,6 +1,6 @@
 <template>
-  <div :style="{'color': styleColorTotal}" class="total-value">Balance: {{ total }}</div>
-  <!-- <div class="total-value" :class="styleColorTotalObj">Balance: {{ total }}</div> -->
+  <!-- <div :style="{'color': styleColorTotal}" class="total-value">Balance: {{ total }}</div> -->
+  <div class="total-value" :class="styleColorTotalObj">Balance: {{ total }}</div>
 </template>
 
 <script>
