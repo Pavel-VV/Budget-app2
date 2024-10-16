@@ -1,7 +1,8 @@
 <template>
   <div class="list-item">
-    <span class="budget-coment">{{ listItem.comment }}</span>
-    <span class="badget-value">{{ listItem.value }}</span>
+    <span class="budget-comment">{{ listItem.comment }}</span>
+    <span class="badget-value" :class="incomeOutcomeClass">{{ listItem.value }}</span>
+    <i class="el-icon" :class="iconClassObj"></i>
     <!-- <ElButton type="danger" size="mini" @click="deleteElement(listItem.id)">Delete</ElButton> -->
     <ElButton type="danger" size="mini" @click="dialogDeleteVisible = true">Delete</ElButton>
 
@@ -26,6 +27,7 @@ export default {
   },
   data: () => ({
     dialogDeleteVisible: false,
+    isTrue: true,
   }),
   methods: {
     deleteElement(id) {
@@ -36,7 +38,23 @@ export default {
       this.$emit('deleteItem', id);
       this.dialogDeleteVisible = false;
     },
-  }
+  },
+  computed: {
+    incomeTrue() {
+      return 'INCOME' === this.listItem.type;
+    },
+
+    iconClassObj() {
+      return {
+        "el-icon-top": this.incomeTrue,
+        "el-icon-bottom": !this.incomeTrue,
+      };
+    },
+
+    incomeOutcomeClass() {
+      return this.incomeTrue ? "income" : "outcome";
+    }
+  },
 
 }
 </script>
@@ -54,4 +72,18 @@ export default {
   margin-left: auto;
   margin-right: 20px;
 }
+
+.el-icon {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.income {
+  color: green;
+}
+
+.outcome {
+  color: red;
+}
+
 </style>
