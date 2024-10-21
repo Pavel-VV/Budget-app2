@@ -2,6 +2,7 @@
   <div id="app">
     <FormData @submitDataForm="onSubmitDataForm"/>
     <TotalBalance :total="totalBalance"/>
+    <SortList @onSortList='sortList'/>
     <BudgetList :list="list" @deleteItemInApp="onDeleteItem"/>
   </div>
 </template>
@@ -10,6 +11,7 @@
 import BudgetList from '@/components/BudgetList';
 import TotalBalance from '@/components/TotalBalance';
 import FormData from '@/components/FormData';
+import SortList from '@/components/SortList';
 
 export default {
   name: 'App',
@@ -17,6 +19,7 @@ export default {
     BudgetList,
     TotalBalance,
     FormData,
+    SortList,
   },
   data: () => ({
     list: {
@@ -41,6 +44,9 @@ export default {
     onSubmitDataForm(data) {
       const dataObj = {...data, id: Math.random()}
       this.$set(this.list, dataObj.id, dataObj);
+    },
+    sortList(type){
+      console.log(type);
     }
   },
   computed: {

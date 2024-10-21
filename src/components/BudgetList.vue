@@ -50,4 +50,5 @@ export default {
   max-width: 500px;
   margin: auto;
 }
+
 </style>
