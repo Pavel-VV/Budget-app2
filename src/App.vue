@@ -3,7 +3,7 @@
     <FormData @submitDataForm="onSubmitDataForm"/>
     <TotalBalance :total="totalBalance"/>
     <SortList @onSortList='sortList'/>
-    <BudgetList :list="list" @deleteItemInApp="onDeleteItem"/>
+    <BudgetList :list="list" :sortButton="sortButtonList" @deleteItemInApp="onDeleteItem"/>
   </div>
 </template>
 
@@ -35,7 +35,8 @@ export default {
         comment: 'Some outcome comment',
         id: 2,
       },
-    }
+    },
+    sortButtonList: '',
   }),
   methods: {
     onDeleteItem(id) {
@@ -46,7 +47,8 @@ export default {
       this.$set(this.list, dataObj.id, dataObj);
     },
     sortList(type){
-      console.log(type);
+      console.log('in App:', type);
+      this.sortButtonList = type;
     }
   },
   computed: {

@@ -1,7 +1,7 @@
 <template>
   <div class='sort-button'>
-    <ElButton class='button-sort' @click='sortList("INCOME")'>Доход</ElButton>
-    <ElButton class='button-sort' @click='sortList("OUTCOME")'>Расход</ElButton>
+    <ElButton class='button-sort' @click='sortList("OUTCOME")'>Доход</ElButton>
+    <ElButton class='button-sort' @click='sortList("INCOME")'>Расход</ElButton>
     <ElButton class='button-sort' @click='sortList("ALL")'>Всё</ElButton>
   </div>
 </template>

@@ -3,7 +3,7 @@
     <ElCard :header="header">
       <template v-if="!isEmpty">
         <div v-for="(item, prop) in list" :key="prop">
-          <BudgetListItem :listItem="item" @deleteItem="onDeleteElement"/>
+          <BudgetListItem v-show="!(item.type === sortButton)" :listItem="item" @deleteItem="onDeleteElement"/>
         </div>
       </template>
       <ElAlert v-else type="info" :title="emptyTitle" :closable="false"/>
@@ -27,6 +27,10 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    sortButton: {
+      type: String,
+      default: 'ALL',
+    }
   },
   data: () => ({
     header: 'Budjet List',
@@ -41,6 +45,10 @@ export default {
     isEmpty() {
       return !Object.keys(this.list).length
     },
+    sortList() {
+      console.log(this.sortButton)
+      return 1
+    }
   }
 }
 </script>
