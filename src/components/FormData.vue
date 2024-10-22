@@ -21,25 +21,35 @@
 <script>
 export default {
   name: 'FormData',
-  data: () => ({
-    formData: {
-      type: "INCOME",
-      comment: "",
-      value: 0,
-    },
-    rules: {
-      type: [
-        {required: true, message: 'Please select type', trigger: 'blur',}
-      ],
-      comment: [
-        {required: true, message: 'Please input comment', trigger: 'blur',}
-      ],
-      value: [
-        {required: true, message: 'Please input value', trigger: 'blur',},
-        {type: 'number', message: 'Value must be a number', trigger: 'blur',}
-      ],
+  data: () => {
+    let validateValue = (rule, value, callback) => {
+      if(value === 0) {
+        callback(new Error('Please, input not a zero!'));
+      } else {
+        callback();
+      }
+    };
+    return {
+      formData: {
+        type: "INCOME",
+        comment: "",
+        value: 0,
+      },
+      rules: {
+        type: [
+          {required: true, message: 'Please select type', trigger: 'blur',},
+        ],
+        comment: [
+          {required: true, message: 'Please input comment', trigger: 'blur',},
+        ],
+        value: [
+          {required: true, message: 'Please input value', trigger: 'blur',},
+          {type: 'number', message: 'Value must be a number', trigger: 'blur',},
+          {validator: validateValue, trigger: 'blur',},
+        ],
+      }
     }
-  }),
+  },
   methods: {
     onSubmitForm() {
       this.$refs.addItemForm.validate((valid) => {
